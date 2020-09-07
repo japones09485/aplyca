@@ -49,6 +49,21 @@ class PostRepository extends ServiceEntityRepository
         )->getResult();
     }
 
+    public function PostId($id){
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->select('post.id,post.titulo,post.descripcion, post.contenido, post.foto, post.fecha_publicacion,post.likes,user.nombre')
+            ->from('App\Entity\Post', 'post')
+            ->leftJoin('post.usuario', 'user')
+            ->where('post.id = '.$id.'')
+            ->groupBy('post.id')
+        ;
+        
+        return $this->getEntityManager()
+        ->createQuery(
+            $qb
+        )->getResult();
+    }
+
 
     // /**
     //  * @return Post[] Returns an array of Post objects

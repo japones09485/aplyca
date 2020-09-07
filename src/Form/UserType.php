@@ -26,6 +26,8 @@ class UserType extends AbstractType
             ->add('Registrar', SubmitType :: class, [
                 'attr' => ['class' => 'btn btn-warning btn-lg btn-block text-light'],
             ])
+
+            
             ;
     }
 

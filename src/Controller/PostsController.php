@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Post;
+use App\Entity\UsuContacto;
 use App\Form\PostType;
 use Exception;
 use Symfony\Bridge\Twig\Node\RenderBlockNode;
@@ -15,6 +16,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class PostsController extends AbstractController
 {
+    
     /**
      * @Route("/registrar-entrada", name="RegistrarEntrada")
      */
@@ -68,6 +70,31 @@ class PostsController extends AbstractController
         $post = $em->getRepository(Post::class)->find($id);
         return $this->render('posts/ver-entrada.html.twig',['post'=> $post]);
     }
+
+
+    /**
+     * @Route("/contacto", name="Contacto")
+     */
+    
+    public function Contacto(Request $request){
+        $cont = new UsuContacto();
+        $form = $this->createForm(ContactoType :: class, $cont);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+        
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($cont);
+            $em->flush();
+            return $this->redirectToRoute('dashboard');
+        }
+
+        return $this->render('posts/index.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+
+
 
      /**
      * @Route("/mis-entradas", name="MisEntradas")

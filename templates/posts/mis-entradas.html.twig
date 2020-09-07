@@ -20,6 +20,7 @@
               <p class="card-text"> {{ entrada.descripcion }}</p>
               <p class="card-text text-info">{{ entrada.nombre }}</p>
                <button class="btn btn-success m-1"  onclick="window.location.href='{{ path( 'VerEntrada',{ id:entrada.id }) }}'"><i class="fa fa-plus" aria-hidden="true"></i>Ver mas</button>
+               
               <p class="card-text">{{ entrada.fecha_publicacion | date }}</p>
             </div>
     </div>
