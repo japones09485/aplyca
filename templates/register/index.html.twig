@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Document</title>
+	<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/stylesheet.css')}}">
+        <link rel="stylesheet" href="{{asset('font-awesome/css/font-awesome.min.css')}}">
+</head>
+<body>
+
+ {% for message in app.flashes('exito') %}
+ 
+    <div class="flash-notice">
+    <div class="container form-ing mx-auto mt-5">
+    <div class="row h-100 justify-content-center align-items-center m-5">
+       <h1 class="text-center text-light">
+       {{ message }}
+       </h1>
+    </div>
+</div>
+
+       
+    </div>
+{% endfor %} 
+
+
+
+<div class="container form-ing mx-auto mt-5">
+    <div class="row h-100 justify-content-center align-items-center m-5">
+       <h1 class="text-center text-light">
+       Registrate con <strong>Aplyca</strong>
+       <hr>
+       </h1>
+       
+       <div class="col-6 m-5 text-light">
+        {{ form(formulario) }}
+       </div>
+    </div>
+</div>
+	<script src="{{ asset('assets/js/jquery.min.js')}}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js')}}"></script> 
+</body>
+</html>
+

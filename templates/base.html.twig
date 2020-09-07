@@ -2,11 +2,50 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>
+        {% block title %}Open Data | Aplyca{% endblock %}</title>
+        {% block stylesheets %}
+        <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/stylesheet.css')}}">
+        <link rel="stylesheet" href="{{asset('font-awesome/css/font-awesome.min.css')}}">
+        {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block navbar %}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <h2 > Aplica</h2>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto ">
+      <li class="nav-item active">
+        <a class="nav-link blank" href="{{ path('dashboard') }}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('MisEntradas') }}">Mis Entradas</a>
+      </li>
+   
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('RegistrarEntrada') }}" >Nueva entrada</a>
+      </li>
+    </ul>
+
+    <div class="form-inline my-2 my-lg-0">
+      <a href="{{ path('app_login') }}" class="my-2 my-sm-0 text-warning"><i class="fa fa-sign-out" aria-hidden="true"></i> Cerrar Sesión</a>
+    </div>
+    
+  </div>
+</nav>
+        {% endblock %}
+        {% block body %}
+            
+        {% endblock %}
+
+        {% block javascripts %}
+        <script src="{{ asset('assets/js/jquery.min.js')}}"></script>
+        <script src="{{ asset('assets/js/bootstrap.min.js')}}"></script> 
+        {% endblock %}
     </body>
 </html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Document</title>
+	<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/stylesheet.css')}}">
+        <link rel="stylesheet" href="{{asset('font-awesome/css/font-awesome.min.css')}}">
+</head>
+<body>
+
+ {% for message in app.flashes('exito') %}
+ 
+    <div class="flash-notice">
+    <div class="container form-ing mx-auto mt-5">
+    <div class="row h-100 justify-content-center align-items-center m-5">
+       <h1 class="text-center text-light">
+       {{ message }}
+       </h1>
+    </div>
+</div>
+
+       
+    </div>
+{% endfor %} 
+
+
+
+<div class="container form-ing mx-auto mt-5">
+    <div class="row h-100 justify-content-center align-items-center m-5">
+       <h1 class="text-center text-light">
+      Bienvenido a <strong>Aplyca</strong>
+       <hr>
+       </h1>
+       
+       <div class="col-6 m-5 text-light">
+        <form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+    <h1 class="text-center">Ingrese por favor</h1>
+    <label for="inputEmail">Email</label>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+    <label for="inputPassword">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" required>
+<br>
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}">
+
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    #}
+
+        <button class="btn btn-warning btn-lg btn-block" type="submit">
+            Ingresa
+        </button>
+</form>
+       </div>
+    </div>
+</div>
+	<script src="{{ asset('assets/js/jquery.min.js')}}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js')}}"></script> 
+</body>
+</html>
+

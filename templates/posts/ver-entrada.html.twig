@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block title %} {{ parent() }} - Crear Entrada {% endblock %}
+{% block navbar %}
+ {{ parent() }}
+{% endblock %}
+{% block body %}
+<div class="jumbotron jumbotron-fluid m-5">
+  <div class="container">
+    <h1 class="display-4">{{ post.titulo }}</h1>
+    <p class="lead">{{ post.contenido }}</p>
+    <a href="{{ path('dashboard') }}"><i class="fa fa-reply" aria-hidden="true"></i> Regresar</a>
+   
+  </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+{% endblock %}

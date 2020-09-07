@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block title %} {{ parent() }} - Crear Entrada {% endblock %}
+{% block navbar %}
+ {{ parent() }}
+{% endblock %}
+{% block body %}
+<div class="container">
+      
+      {% for entrada in entradas %}
+        <div class="row">
+          <div class="col">
+            <div class="card m-3 target">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img src="{{ asset('uploads/fotos/'~ entrada.foto) }}" class="card-img img-target" alt="...">
+                </div>
+            <div class="col-md-8">
+              <div class="card-body text-center">
+              <h5 class="card-title text-info">{{ entrada.titulo }}</h5>
+              <p class="card-text"> {{ entrada.descripcion }}</p>
+              <p class="card-text text-info">{{ entrada.nombre }}</p>
+               <button class="btn btn-success m-1"  onclick="window.location.href='{{ path( 'VerEntrada',{ id:entrada.id }) }}'"><i class="fa fa-plus" aria-hidden="true"></i>Ver mas</button>
+              <p class="card-text">{{ entrada.fecha_publicacion | date }}</p>
+            </div>
+    </div>
+  </div>
+</div>
+          </div>
+        </div>
+          {% endfor %}
+{% endblock %}
+
